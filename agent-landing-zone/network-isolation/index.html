@@ -1,0 +1,2403 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for AI Landing Zones">
+      
+      
+        <meta name="author" content="Microsoft">
+      
+      
+      
+        <link rel="prev" href="../planning/">
+      
+      
+        <link rel="next" href="../sizing/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../media/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>Network isolation - AI Landing Zones</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css?v=7702616a2bfd">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#network-isolation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="AI Landing Zones" class="md-header__button md-logo" aria-label="AI Landing Zones" data-md-component="logo">
+      
+  <img src="../../media/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Landing Zones
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Network isolation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Azure/AI-Landing-Zones" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AI Landing Zones" class="md-nav__button md-logo" aria-label="AI Landing Zones" data-md-component="logo">
+      
+  <img src="../../media/logo.svg" alt="logo">
+
+    </a>
+    AI Landing Zones
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Azure/AI-Landing-Zones" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agent Landing Zone
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Agent Landing Zone
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../whats-new/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What's new
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plan your deployment
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Plan your deployment
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-it-works/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How it works
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../planning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment choices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network isolation
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network isolation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-changes-with-isolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What changes with isolation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#isolation-and-provisioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Isolation and provisioning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#private-network-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Private network access
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Private network access">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jumpbox-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Jumpbox access
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connected-host-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connected-host requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Connected-host requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#post-provision-can-be-deferred" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Post-provision can be deferred
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image-builds-in-isolated-deployments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Image builds in isolated deployments
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Image builds in isolated deployments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#application-specific-package-feeds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Application-specific package feeds
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#private-connectivity-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Private connectivity checks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Private connectivity checks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opt-in-firewall-dns-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opt-in firewall DNS proxy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#private-native-blob-ingestion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Private native Blob ingestion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integrate-with-an-existing-hub" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integrate with an existing hub
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sizing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sizing and capacity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cost-planning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cost planning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resource-naming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resource naming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/design-checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design Checklist
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agent Application
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Agent Application
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../application/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hosted-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agent hosting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5_3" id="__nav_2_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frontend
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Frontend
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../application-auth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sign-in & access
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../embed-chat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Embed chat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-feedback/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User feedback
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ingestion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ingestion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multimodality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multimodality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5_6" id="__nav_2_5_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grounding
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Grounding
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../foundry-iq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Foundry IQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../work-iq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Work IQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fabric-iq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fabric IQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SharePoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nl2sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NL2SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agent-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools & MCP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runbooks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Runbooks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deploy-infra-only/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy infra only
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deploy-full-stack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy full stack
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../application-gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Application Gateway
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../private-access/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Private access (VPN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../build-your-own-app/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bring your own app
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../publish-to-teams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teams & M365
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../connect-copilot-studio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-devops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Azure DevOps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../terraform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Terraform templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../portal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy via portal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whatisnew/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What's New
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-changes-with-isolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What changes with isolation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#isolation-and-provisioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Isolation and provisioning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#private-network-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Private network access
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Private network access">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jumpbox-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Jumpbox access
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connected-host-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connected-host requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Connected-host requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#post-provision-can-be-deferred" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Post-provision can be deferred
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image-builds-in-isolated-deployments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Image builds in isolated deployments
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Image builds in isolated deployments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#application-specific-package-feeds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Application-specific package feeds
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#private-connectivity-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Private connectivity checks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Private connectivity checks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opt-in-firewall-dns-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opt-in firewall DNS proxy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#private-native-blob-ingestion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Private native Blob ingestion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integrate-with-an-existing-hub" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integrate with an existing hub
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="network-isolation">Network isolation</h1>
+<p>Private networking is selected with the <code>NETWORK_ISOLATION</code> deployment input,
+which defaults to <code>false</code>. This page explains connectivity, DNS and build
+requirements rather than deployment steps. <a href="../how-it-works/">How it works</a>
+introduces the input formats and deployment lifecycle.</p>
+<p>A <strong>private endpoint</strong> gives a service a private IP address in a VNet.
+Private DNS directs its normal hostname to that address. A <strong>virtual private
+network (VPN)</strong> connects an authorized remote computer or network to the VNet.
+A <strong>jumpbox</strong> is a virtual machine (VM) used for administration; Azure Bastion
+provides remote access to it. A NAT gateway provides outbound address
+translation. None of these connections grants permission to read service data.</p>
+<p>With <code>NETWORK_ISOLATION=true</code>, Agent Landing Zone uses private endpoints and private DNS for the deployed workload services. With the default empty <code>allowedIpRanges</code>, public access to those service endpoints is disabled. Azure Resource Manager remains public; telemetry and optional public ingress have separate settings.</p>
+<p>An explicit, nonempty <code>allowedIpRanges</code> in <code>main.parameters.json</code> enables
+IP-restricted public access on services that support those rules, even with
+isolation enabled. Those public paths and any reused network or DNS resources
+remain part of the connectivity design.</p>
+<p>The <a href="../deploy-infra-only/">Deploy infra only</a> and
+<a href="../deploy-full-stack/">Deploy full stack</a> runbooks contain the procedures.
+The <a href="../azure-devops/">Azure DevOps runbook</a> covers optional pipeline automation.
+<a href="../planning/">Deployment choices</a> explains standalone and hub integration.
+An AI Gateway governs model requests, not workload networking or user access.
+Private endpoints, DNS, routes, firewall rules and authorization remain necessary.</p>
+<div class="admonition note">
+<p class="admonition-title">Teams and Microsoft 365 Copilot publication</p>
+<p><a href="../publish-to-teams/">Publish to Teams and M365</a> adds a manual, source-IP-filtered
+public exception for the Foundry Activity route while Foundry and Bot Service
+public network access stays disabled. Channel delivery does not use Private
+Link; other Foundry APIs remain private. The template does not enable this exception.</p>
+</div>
+<p>The <a href="../connect-copilot-studio/">Connect Copilot Studio</a> runbook describes an
+authenticated agent flow and Power Platform VNet delegation to reach the Foundry
+private endpoint; it does not require the Activity-route public exception.</p>
+<h2 id="what-changes-with-isolation">What changes with isolation</h2>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th><code>NETWORK_ISOLATION=false</code></th>
+<th><code>NETWORK_ISOLATION=true</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Workload service access</td>
+<td>Public endpoints, with service authentication and authorization</td>
+<td>Private endpoints by default</td>
+</tr>
+<tr>
+<td>DNS</td>
+<td>Public DNS</td>
+<td>Private DNS zones linked to the VNet</td>
+</tr>
+<tr>
+<td>Jumpbox, Azure Bastion, NAT gateway</td>
+<td>Not deployed by default</td>
+<td>Deployed by default</td>
+</tr>
+<tr>
+<td>Container image builds</td>
+<td>Local Docker or regular ACR Tasks</td>
+<td>ACR Task agent pool inside the VNet by default</td>
+</tr>
+<tr>
+<td>Post-provision and deploy</td>
+<td>Run from an authorized host that can reach the endpoints</td>
+<td>Run from an authorized host connected to the VNet</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The ACR Task agent pool is created only for isolated deployments. When isolation is off, supported components can build with local Docker or regular ACR Tasks. No pool is created, even if <code>DEPLOY_ACR_TASK_AGENT_POOL</code> is <code>true</code>.</p>
+</div>
+<p><span id="enable-isolation"></span></p>
+<h2 id="isolation-and-provisioning">Isolation and provisioning</h2>
+<p><code>NETWORK_ISOLATION=true</code> is resolved before provisioning.</p>
+<p>Azure Resource Manager (ARM) creates and manages Azure resources through a
+public control plane, but <code>azd provision</code> also
+runs lifecycle hooks. An existing environment can need private App Configuration
+access before ARM deployment to resolve its topology. Post-provision also needs
+private connectivity, so an unconnected host cannot complete every stage.</p>
+<p>The matching deployment runbook therefore requires a connected host. The
+default Foundry hosted deployment also needs the image preparation and
+deployment metadata stages described in
+<a href="../deploy-full-stack/">Deploy full stack</a>.</p>
+<p><span id="reach-the-private-network"></span></p>
+<h2 id="private-network-access">Private network access</h2>
+<p>Private services can be reached through:</p>
+<ul>
+<li><strong>Point-to-site or site-to-site VPN</strong> into the landing zone VNet or a peered hub.</li>
+<li><strong>A VM or build agent</strong> in the VNet or a peered VNet, with private DNS zone access.</li>
+<li><strong>The jumpbox VM</strong> deployed by the landing zone, reached through Azure Bastion.</li>
+</ul>
+<p><span id="use-the-jumpbox"></span></p>
+<h3 id="jumpbox-access">Jumpbox access</h3>
+<p>The default jumpbox is a Windows VM. Unless overridden, its administrator user is
+<code>testvmuser</code>. The password is supplied through the secure <code>vmAdminPassword</code>
+provisioning input, not a documented Key Vault secret. Unavailable credentials
+require an authorized administrator's approved reset procedure, without
+exposing passwords in shell history or logs.</p>
+<p>Azure Bastion provides portal access to the VM. It still needs the
+<a href="../deploy-full-stack/#prerequisites">deployment prerequisites</a>. Docker is not
+installed by default and is unnecessary for ACR Task agent-pool builds.</p>
+<h2 id="connected-host-requirements">Connected-host requirements</h2>
+<p>The connected host needs the same reviewed platform Git commit or release tag
+and approved inputs as the original workspace. Its local azd environment also
+needs current provisioning outputs. The
+<a href="../deploy-infra-only/">Deploy infra only</a> runbook explains environment
+selection, output refresh and separate provisioning/configuration steps.</p>
+<p>The jumpbox's managed identity, an Azure-managed service identity that does
+not need a stored password, needs the selected application's configuration
+and build roles. For hosted-agent authoring,
+the runner needs <strong>Foundry User</strong> on the exact
+Foundry project, plus read access to the Foundry account. Cognitive Services
+Contributor and OpenAI User alone do not grant the agent data-plane actions.
+Subscription or resource-group Owner is not an appropriate fix for this denial.
+See <a href="https://learn.microsoft.com/azure/foundry/concepts/rbac-foundry">Foundry RBAC</a>
+for the current role catalog and scopes. New grants need time to propagate.</p>
+<p>An infrastructure-only deployment stops after provisioning and post-provision
+configuration. It can contain placeholder Container Apps without running the
+selected applications. The <a href="../deploy-full-stack/">Deploy full stack</a>
+runbook also deploys application code.</p>
+<h3 id="post-provision-can-be-deferred">Post-provision can be deferred</h3>
+<p>When isolation is enabled, post-provision can be <strong>deferred</strong> instead of failing.
+<code>RUN_FROM_JUMPBOX=false</code> (or <code>0</code>, <code>no</code>, <code>skip</code>) requests deferral, as does
+<code>AZURE_SKIP_NETWORK_ISOLATION_WARNING=true</code> while <code>RUN_FROM_JUMPBOX</code> is not
+truthy. A truthy <code>RUN_FROM_JUMPBOX</code>, such as <code>true</code>, requests the connectivity
+check even if the warning flag is set. Deferral produces:</p>
+<div class="highlight"><pre><span></span><code>Post-provision configuration explicitly deferred; application setup is incomplete.
+</code></pre></div>
+<p>If the other provisioning stages succeed, <code>azd provision</code> reports success, but
+the application is <strong>not</strong> configured. Deferral does not bypass earlier topology
+or provisioning checks. Configuration remains incomplete until deferral is
+cleared and configuration succeeds from a connected host. The
+<a href="../deploy-infra-only/#complete-a-deferred-post-provision">Deploy infra only</a>
+runbook provides those steps.</p>
+<p>When the deferral settings are not set and the private endpoints cannot be reached, post-provision fails with:</p>
+<div class="highlight"><pre><span></span><code>Private post-provision prerequisites failed. Connect through VPN/VNet and rerun postProvision; configuration has not started.
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code>RUN_FROM_JUMPBOX</code> only controls whether post-provision is deferred. It does not provide connectivity. <code>azd deploy</code> always checks private reachability, and fails with "Private deployment prerequisites failed" when the host cannot reach the endpoints.</p>
+</div>
+<h2 id="image-builds-in-isolated-deployments">Image builds in isolated deployments</h2>
+<p>Public build agents cannot reach the default private registry. Remote builds
+use an <strong>ACR Task agent pool</strong> inside the VNet
+(<code>DEPLOY_ACR_TASK_AGENT_POOL=true</code>). Hosted topology composition selects this
+pool when network isolation is enabled.</p>
+<p>If the pool is missing, <code>azd deploy</code> stops before building. Pool creation uses
+<code>DEPLOY_ACR_TASK_AGENT_POOL=true</code> through the matching deployment runbook.
+Where a component supports local builds, <code>BUILD_MODE=local</code> instead needs a
+VNet-connected host with working Docker.</p>
+<p>The local alternative applies to component scripts that support <code>BUILD_MODE=local</code>.
+Automatic hosted orchestrator image preparation and isolated custom source builds
+still require the private pool. Supplying an already-built immutable digest can
+skip those builds. To deploy without a pool, the root pre-deploy check also
+requires <code>BUILD_MODE=local</code>. Each remaining service must support local builds
+for that exception to work.</p>
+<h3 id="application-specific-package-feeds">Application-specific package feeds</h3>
+<p>The root deployment defaults include dependency-verified package feed
+destinations alongside common language and OS package registries, through
+the scoped infrastructure build-egress configuration. This is a build-only
+allowlist, not a runtime or general Internet exception. It does not allow
+every mirror recorded in a custom application's lockfile. The exact component
+commit's <code>resolved</code> URLs and download redirects determine its build needs.</p>
+<p>Additional dependencies are declared in
+<code>parameters.additionalAcrTaskBuildFqdns.value</code> in the root <code>main.parameters.json</code>.
+This is an explicit array, not an <code>azd</code> environment variable. Provisioning
+applies it; the connected runner needs the same reviewed parameter file to
+preserve the setting on later provisions.</p>
+<p>The Agent Application orchestrator frontend lockfile uses
+<code>ms-feed-2.pkgs.visualstudio.com</code>, <code>ms-feed-12.pkgs.visualstudio.com</code>,
+<code>ms-feed-17.pkgs.visualstudio.com</code>, and <code>ms-feed-25.pkgs.visualstudio.com</code>.
+Their public package downloads redirect to <code>*.vsblob.vsassets.io</code>.
+These four exact feeds and the redirect content delivery network (CDN) are included in the Agent Landing
+Zone default build allowlist. <code>packages.microsoft.com</code> is already included in
+the OS-package rule and does not need an additional entry.</p>
+<p>With <code>extendFirewallForAcrTaskBuilds=true</code> (the default) and an effective ACR
+Task agent pool, the feeds, redirect CDN, and additional hosts are allowed only
+from the build-agent subnet over HTTPS on port 443. They are not added to
+jumpbox, application, or agent-subnet rules. The additional-host array defaults
+to empty.</p>
+<p>Disabling the build-egress extension removes these package rules.
+Re-enabling it restores them. This egress rule has no DNS-proxy dependency and
+does not change client DNS.</p>
+<p>Do not enable public registry access, allow all Internet egress, disable TLS
+verification, or change dependency integrity hashes to work around a failed build.</p>
+<p>See <a href="../troubleshooting/#package-installation-fails-inside-the-build-pool">Package installation fails inside the build pool</a>
+for diagnosis.</p>
+<p><span id="verify-private-connectivity"></span></p>
+<h2 id="private-connectivity-checks">Private connectivity checks</h2>
+<p>The runbooks check service hostnames from the deployment runner, including
+the host in <code>APP_CONFIG_ENDPOINT</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Expected result</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DNS</td>
+<td>Only private IPv4 addresses (10.x, 172.16 through 31.x or 192.168.x)</td>
+<td>The runner resolves the private endpoint rather than the public endpoint.</td>
+</tr>
+<tr>
+<td>Transmission Control Protocol (TCP)</td>
+<td>Connection succeeds on port 443</td>
+<td>Routing and firewall policy allow the endpoint connection.</td>
+</tr>
+<tr>
+<td>TLS</td>
+<td>Handshake succeeds with the original hostname and normal certificate validation</td>
+<td>The connection reaches the expected service securely.</td>
+</tr>
+</tbody>
+</table>
+<p>Public DNS answers usually indicate a missing private-zone link or an
+incorrect VPN/hub forwarding path.</p>
+<p>On Windows, <code>nslookup</code> can differ from the operating system resolver used by
+the Python prerequisite check, especially with VPN Name Resolution Policy
+Table (NRPT) rules. That check requires private IPv4 answers and rejects mixed
+public/private, IPv6, loopback and link-local answers. It then verifies TCP 443
+and TLS without sending an HTTP request or credentials. Connectivity is not
+authorization: API access and document permissions still need tests with the
+intended user identities.</p>
+<h3 id="opt-in-firewall-dns-proxy">Opt-in firewall DNS proxy</h3>
+<p><code>ENABLE_FIREWALL_DNS_PROXY</code> defaults to <code>false</code> and maps to the Bicep boolean
+<code>enableFirewallDnsProxy</code> (also default <code>false</code>), which sets
+<code>dnsSettings.enableProxy</code>. It applies only when the existing
+<code>deployAzureFirewall</code> and <code>networkIsolation</code> gates enable firewall deployment.
+It is intended for a topology that deliberately uses the firewall as its DNS
+forwarding path. The matching deployment runbook applies the selection through
+normal provisioning. Enabling the proxy does
+<strong>not</strong> redirect VNet or VPN clients to the firewall or rewrite their DNS
+configuration. It is independent of the build-feed egress allowlist.</p>
+<p>Client DNS routing and private-zone resolution remain separate requirements.
+A proxy cannot repair missing zone links, VPN routes or application
+authentication. Disabling it requires confirmation that the deployed DNS path
+does not depend on it before reprovisioning.</p>
+<h2 id="private-native-blob-ingestion">Private native Blob ingestion</h2>
+<p>For the default native Blob path, Search reads and processes Blob documents
+for Foundry IQ retrieval. A <code>searchIndex</code> source instead exposes an index
+populated by another pipeline. Their private-network setup differs.</p>
+<p>Native <code>azureBlob</code> ingestion uses outbound shared private links managed by
+Search. Configuration verifies deployment-owned links, targets and groups
+before dependent cleanup/mutation and again before knowledge source creation.
+It <strong>does not automatically approve</strong> target connections. Pending links
+require approval by an authorized target administrator for each connection.</p>
+<p>The gate is limited to <code>NETWORK_ISOLATION=true</code>, <code>RETRIEVAL_BACKEND=foundry_iq</code>
+and rendered native <code>azureBlob</code> sources, excluding the <code>searchIndex</code> pattern.
+It checks the Agent Application Search link to deployment Blob storage (<code>blob</code>)
+and the links to the deployment Foundry account (<code>openai_account</code>,
+<code>foundry_account</code>, <code>cognitiveservices_account</code>). It does not configure the
+separate Foundry Search service or unrelated services. Exact names come from
+the template's <code>SEARCH_SHARED_PRIVATE_LINKS</code> manifest, including bounded
+Foundry names. The exact Search shared-link GET must return the expected
+name, target and group. If its body includes a resource ID, that must match
+too.</p>
+<p>The target service receives a private endpoint connection (PEC) request.
+Because its name, message and endpoint ID may not identify the originating
+Search link, an administrator must verify and approve the correct request.
+The configuration script reads the deployment's Search links and leaves
+target-side approval to that administrator. See Microsoft's
+<a href="https://learn.microsoft.com/en-us/azure/search/search-indexer-howto-access-private">approval and shared-link status procedure, sections 2 and 3</a>.</p>
+<p>A <code>Pending</code> source link stops immediately with its exact Search ID, target
+ID, group and link name for administrator investigation and approval.
+After approval, configuration needs another run. Each source link must report connection
+status <code>Approved</code> and provisioning state <code>Succeeded</code> before configuration
+continues. Read timeouts or denials require restored connectivity or Search
+read permissions, not public access. See
+<a href="../troubleshooting/#search-shared-private-links-are-not-ready">Search shared private links are not ready</a>.</p>
+<p>Polling has a 600-second total readiness budget, a 10-second interval and
+ARM request timeouts of at most 30 seconds (limited by the remaining budget).
+Each exact Search shared link must be <code>Approved</code> and <code>Succeeded</code>, the
+documented source-side readiness signal. Approved links whose provisioning
+is still propagating use bounded polling. Pending approval does not spend
+this budget waiting for an unprovable target match. Administrator-approved
+links are usable even when target PECs are paginated, opaque or unreadable
+by the runner. The existing Azure CLI/managed-identity credential is reused.
+The runner needs Search shared-link read permission, with no new secret,
+target PEC read/write requirement or automatic RBAC grant.</p>
+<p>Native ingestion supports configured Foundry IQ source kinds and is not
+feature-equivalent to Agent App Ingestion. Choosing it does not remove
+Entra ID authentication, on-behalf-of (OBO) token exchange, RBAC or
+document-level authorization. OBO exchanges a user's token for another API's
+token while retaining that user's delegated identity.
+Azure Data Lake Storage (ADLS) Gen2 uses Blob storage with a hierarchical
+directory namespace. In particular,
+<code>FOUNDRY_IQ_INGESTION_PERMISSION_OPTIONS=[]</code> is a deliberate shared-source
+metadata choice for active, supported non-ADLS native Blob ingestion, not a
+workaround for a private connection failure. Infrastructure-published <code>[]</code>
+for <code>ai_search</code> (any pattern) or <code>foundry_iq</code> / <code>searchIndex</code> is accepted as
+unused metadata, not a shared-source opt-in: no native Blob source is rendered.
+See
+<a href="../configuration/#explicit-shared-source-permission-options">Explicit shared-source permission options</a>.</p>
+<h2 id="integrate-with-an-existing-hub">Integrate with an existing hub</h2>
+<p>Hub integration uses <code>DEPLOYMENT_MODE=ailz-integrated</code> with explicit settings:</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DEPLOYMENT_MODE=ailz-integrated</code></td>
+<td>Declares integration intent; does not attach a hub or override component flags by itself</td>
+</tr>
+<tr>
+<td><code>HUB_INTEGRATION_HUB_VNET_RESOURCE_ID</code></td>
+<td>Hub VNet to peer with</td>
+</tr>
+<tr>
+<td><code>HUB_INTEGRATION_CREATE_HUB_PEERING</code></td>
+<td>Create spoke-to-hub peering for a new spoke VNet (default <code>true</code>); hub owner supplies reverse peering. Existing VNet peerings are externally managed</td>
+</tr>
+<tr>
+<td><code>HUB_INTEGRATION_PEERING_ALLOW_GATEWAY_TRANSIT</code></td>
+<td>Allow gateway transit (default <code>false</code>)</td>
+</tr>
+<tr>
+<td><code>HUB_INTEGRATION_PEERING_USE_REMOTE_GATEWAYS</code></td>
+<td>Use the hub gateway (default <code>false</code>)</td>
+</tr>
+<tr>
+<td><code>HUB_INTEGRATION_EGRESS_NEXT_HOP_IP</code></td>
+<td>Next hop for egress, for example the hub firewall</td>
+</tr>
+<tr>
+<td><code>HUB_INTEGRATION_EXISTING_ROUTE_TABLE_RESOURCE_ID</code></td>
+<td>Existing route table to attach</td>
+</tr>
+<tr>
+<td><code>AZURE_PE_RESOURCE_GROUP_NAME</code>, <code>AZURE_PE_LOCATION</code></td>
+<td>Where to place private endpoints</td>
+</tr>
+<tr>
+<td><code>EXISTING_*</code></td>
+<td>Reuse the existing VNet, private DNS zones, jumpbox, Bastion, NAT gateway or monitoring resources</td>
+</tr>
+</tbody>
+</table>
+<p><a href="../configuration/#network-and-security">Deployment settings</a> lists the inputs;
+<a href="../../bicep/hub-and-spoke/">hub-and-spoke design</a> explains their network effects.
+Execution steps belong to the
+<a href="../deploy-infra-only/">Deploy infra only</a> runbook.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <div style="
+  background-color: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+  text-align: center;
+  font-size: 0.95em;
+  padding: 1em 0;
+">
+  © 2026 Azure AI Landing Zones
+</div>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.icon", "content.iconify", "navigation.tracking", "content.code.annotate", "navigation.top"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+    
+  </body>
+</html>

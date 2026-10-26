@@ -1,0 +1,2588 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for AI Landing Zones">
+      
+      
+        <meta name="author" content="Microsoft">
+      
+      
+      
+        <link rel="prev" href="../private-access/">
+      
+      
+        <link rel="next" href="../publish-to-teams/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../media/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>Bring your own app - AI Landing Zones</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css?v=7702616a2bfd">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#bring-your-own-app" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="AI Landing Zones" class="md-header__button md-logo" aria-label="AI Landing Zones" data-md-component="logo">
+      
+  <img src="../../media/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Landing Zones
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Bring your own app
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Azure/AI-Landing-Zones" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AI Landing Zones" class="md-nav__button md-logo" aria-label="AI Landing Zones" data-md-component="logo">
+      
+  <img src="../../media/logo.svg" alt="logo">
+
+    </a>
+    AI Landing Zones
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Azure/AI-Landing-Zones" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agent Landing Zone
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Agent Landing Zone
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../whats-new/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What's new
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plan your deployment
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Plan your deployment
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-it-works/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How it works
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../planning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment choices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network-isolation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network isolation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sizing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sizing and capacity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cost-planning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cost planning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resource-naming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resource naming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/design-checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design Checklist
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agent Application
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Agent Application
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../application/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hosted-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agent hosting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5_3" id="__nav_2_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frontend
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Frontend
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../application-auth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sign-in & access
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../embed-chat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Embed chat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-feedback/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User feedback
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ingestion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ingestion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multimodality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multimodality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5_6" id="__nav_2_5_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grounding
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Grounding
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../foundry-iq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Foundry IQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../work-iq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Work IQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fabric-iq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fabric IQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharepoint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SharePoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nl2sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NL2SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agent-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools & MCP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runbooks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Runbooks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deploy-infra-only/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy infra only
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deploy-full-stack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy full stack
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../application-gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Application Gateway
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../private-access/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Private access (VPN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bring your own app
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bring your own app
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objective
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to use
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#procedure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Procedure
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Procedure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#customize-an-agent-application-component" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Customize an Agent Application component
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Customize an Agent Application component">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pin-the-modified-component" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pin the modified component
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#private-git-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Private Git authentication
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-binding-and-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Application binding and selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-a-different-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploy a different application
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-and-recover" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verify and recover
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Application definition
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Application definition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shipped-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shipped example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-a-definition-cannot-contain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What a definition cannot contain
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#capability-profiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capability profiles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#folder-layout-and-azureyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Folder layout and azure.yaml
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#source-pinning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Source pinning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reading-platform-outputs-at-runtime" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading platform outputs at runtime
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validate-and-select-a-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validate and select a definition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configappdefinition-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        config.appdefinition reference
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#related-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related pages
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rollback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rollback
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../publish-to-teams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teams & M365
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../connect-copilot-studio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-devops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Azure DevOps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../terraform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Terraform templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../portal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy via portal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whatisnew/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What's New
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objective
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to use
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#procedure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Procedure
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Procedure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#customize-an-agent-application-component" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Customize an Agent Application component
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Customize an Agent Application component">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pin-the-modified-component" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pin the modified component
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#private-git-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Private Git authentication
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-binding-and-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Application binding and selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-a-different-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploy a different application
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-and-recover" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verify and recover
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Application definition
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Application definition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shipped-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shipped example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-a-definition-cannot-contain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What a definition cannot contain
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#capability-profiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capability profiles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#folder-layout-and-azureyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Folder layout and azure.yaml
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#source-pinning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Source pinning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reading-platform-outputs-at-runtime" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading platform outputs at runtime
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validate-and-select-a-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validate and select a definition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configappdefinition-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        config.appdefinition reference
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#related-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related pages
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rollback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rollback
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="bring-your-own-app">Bring your own app</h1>
+<h2 id="objective">Objective</h2>
+<p>Customize the Agent Application or deploy a different, customer-owned application
+with pinned deployment inputs. A different application must implement the
+authentication, UI and ingestion API contracts for any components it reuses.</p>
+<h2 id="when-to-use">When to use</h2>
+<p>Use this runbook when documented configuration is insufficient or you need a
+different application. Choose the branch that matches your change:</p>
+<table>
+<thead>
+<tr>
+<th>Goal</th>
+<th>Start here</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Change a documented setting</td>
+<td><a href="../configuration/">Deployment settings</a>; no source fork needed</td>
+</tr>
+<tr>
+<td>Extend the Agent Application orchestrator or tools</td>
+<td><a href="../agent-tools/">Agent tools</a>, then pin only changed components below</td>
+</tr>
+<tr>
+<td>Deploy a different application</td>
+<td>The custom hosted example and its application definition below</td>
+</tr>
+</tbody>
+</table>
+<p>For the Agent Application orchestrator hosted in Foundry, use <a href="../foundry-iq/">Foundry IQ</a> for
+knowledge base retrieval. Custom strategies and tools must implement and test
+the hosted entrypoint and authorization path before deployment to Foundry.
+The default remains <code>maf_lite</code> with Foundry IQ. A source fork or capability
+profile does not close the protected-retrieval integration gate in the
+Deploy full stack runbook. Implement and test that identity boundary before
+using protected documents; do not substitute a strategy flag.</p>
+<p><span id="before-you-start"></span></p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Prepare the platform checkout, Python hook dependencies, Azure sign-in and
+  deployment permissions in the <a href="../deploy-full-stack/">Deploy full stack runbook</a>.
+  Commands below run from the platform root unless stated otherwise.</li>
+<li>The deployment identity must be able to create scoped role assignments.
+  Private Git sources also require noninteractive read access on the actual
+  runner; Azure sign-in does not authorize Git.</li>
+<li>Hosted components require the runner's Foundry agent-authoring access on the
+  exact project, plus account read access. Review the
+  <a href="../deploy-full-stack/#foundry-orchestrator-hosted-no-panel-or-hosted-panel">hosted deployment permissions</a>
+  for the required scopes.</li>
+<li>Private deployments require a connected host with private DNS resolution.
+  An ACR build pool does not provide that host's connectivity.</li>
+<li>For a different application, create a <strong>new azd environment</strong> through the
+  deployment runbook and select its definition before provisioning.</li>
+</ul>
+<p>Definitions and manifests are deployment inputs, not runtime configuration.
+Keep secrets out of both. For App Configuration updates under label <code>agent-lz</code>
+and hosted redeployment requirements, follow <a href="../configuration/">Deployment settings</a>.
+Do not restart a Container App to refresh a Foundry-hosted agent.</p>
+<h2 id="procedure">Procedure</h2>
+<p>Choose <strong>Customize an Agent Application component</strong> for a source change.
+For a different application, follow <strong>Application binding and selection</strong>, then
+<strong>Deploy a different application</strong>. Inspect the contract reference below when
+editing the definition.</p>
+<p><span id="customize-a-bundled-component"></span></p>
+<h3 id="customize-an-agent-application-component">Customize an Agent Application component</h3>
+<p>Prefer configuration first. Fork only runtime repositories whose source you
+change; an orchestrator extension does not require UI or ingestion forks.
+Fork or mirror the platform when maintaining deployment inputs or automation.
+Changing its Git remote does not change component repository URLs.</p>
+<h4 id="pin-the-modified-component">Pin the modified component</h4>
+<p>For an orchestrator customization:</p>
+<ol>
+<li>Implement and test the hosted entrypoint and changed behavior, including
+   Foundry IQ retrieval where relevant. Commit and publish a stable tag.</li>
+<li>Update its <code>repo</code>, <code>tag</code> and full 40-character Git commit hash together in the
+   platform <code>manifest.json</code>. The fetch path selects a tag, or branch when no
+   tag is set, then verifies HEAD. A commit hash alone is not a selectable fetch reference.</li>
+<li>Set the Agent Application definition's orchestrator <code>source.commit</code> to the <strong>same hash</strong>.
+   Keep application ID <code>agent-lz-default</code> and unchanged component pins.</li>
+<li>
+<p>Validate:</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>config.appdefinition<span class="w"> </span>--validate<span class="w"> </span>app-definition.json
+</code></pre></div>
+</li>
+<li>
+<p>Commit both pin files together. Follow the <a href="../deploy-full-stack/">Deploy full stack runbook</a>
+   and <a href="../hosted-agents/">hosted image preparation</a>, which builds from the
+   manifest-pinned orchestrator. A startup-variable change cannot convert a
+   Container App image into a supported hosted image.</p>
+</li>
+<li>Verify the deployed version and changed behavior through the UI. Test both
+   authorized and denied access to protected content.</li>
+</ol>
+<p>Keep manifest names <code>agent-app-ui</code>, <code>agent-app-orchestrator</code>,
+<code>agent-app-ingestion</code> and definition names <code>ui</code>, <code>orchestrator</code>, <code>ingestion</code>.
+Hooks use these to map sibling folders. Existing checkouts are verified, not
+advanced automatically: preserve local work before relocating stale checkouts.
+Matching HEAD does not detect uncommitted source changes. Run
+<code>git status --porcelain</code> in each source folder and require no output for the
+source being built; retain reviewed deployment-input edits separately.</p>
+<p>Upstream validation does not cover your modifications. Before deployment,
+record the previous tested pin files and image provenance for <a href="#rollback">deployment rollback</a>.</p>
+<h4 id="private-git-authentication">Private Git authentication</h4>
+<p>Use an approved credential helper, short-lived token or SSH identity with
+repository read access, including for hosted image preparation. Test it as the
+deployment runner. Never put credentials in URLs, definitions, environment files
+or logs. See <a href="../azure-devops/">Azure DevOps</a> for the optional pipeline.</p>
+<h3 id="application-binding-and-selection">Application binding and selection</h3>
+<p>One azd environment hosts one application ID. Set <code>AGENTLZ_APP_DEFINITION</code> in
+that environment with <code>azd env set</code> to select a definition file or containing
+folder; omission selects the Agent Application.
+Select it <strong>before first provision</strong>.</p>
+<p>The <code>preup</code> lifecycle hook rejects invalid definitions and changed application IDs
+before Azure resource creation. The <code>preprovision</code> hook repeats validation for standalone
+<code>azd provision</code>, but cannot guarantee rejection before azd initializes its
+resource group. Run <code>azd hooks run preup</code> first for that safeguard.
+Do not edit a binding to force another application into an existing environment.</p>
+<details>
+<summary>Ingestion and additive composition</summary>
+<p><code>DEPLOY_INGESTION_CONTAINER_APP</code> selects Agent Application composition, not components in
+an explicit custom definition. Foundation composition remains additive:
+Agent Application Container App placeholders can remain alongside custom resources.
+Published ingestion capability describes the platform's ingestion selection;
+your application must implement uploads if it needs them.
+If reusing Agent App UI, preserve its
+<a href="../ingestion/">upload-gate contract</a>.</p>
+</details>
+<h3 id="deploy-a-different-application">Deploy a different application</h3>
+<p>Use <code>samples/custom-app/hosted/</code>. Its minimal Responses server demonstrates
+deployment and configuration access, not retrieval, conversation storage or
+the Agent App UI API. Microsoft's
+<a href="https://learn.microsoft.com/azure/ai-foundry/agents/concepts/hosted-agents">Hosted agents documentation</a>
+describes service protocols and identities; the platform contracts below govern
+this release's deployment.</p>
+<ol>
+<li>Inspect the custom hosted example's <code>app-definition.json</code>, <code>azure.yaml</code>
+   and <code>src/main.py</code>.
+   Keep component/service name <code>agent</code>, the explicit hosted agent name and
+   Responses protocol aligned.</li>
+<li>Replace the answer logic, preserving the protocol and health endpoints.
+   Implement authentication, authorization and runtime configuration loading;
+   capability profiles do not implement these behaviors.</li>
+<li>Commit source changes. Obtain the full source repository commit:<div class="highlight"><pre><span></span><code>git<span class="w"> </span>rev-parse<span class="w"> </span>HEAD
+</code></pre></div>
+<p>Replace the definition's all-zero <code>components[0].source.commit</code> with that
+  value. Run <code>git rev-parse HEAD</code> from the source repository: the shipped <code>src</code>
+  belongs to the platform repository; a separate source repository needs its
+  own HEAD. Set the pin in the deployment
+  workspace <strong>after checkout</strong>; another commit changes HEAD again. Keep source
+  files unchanged. For durable committed inputs in a single-repository layout,
+  consider the prebuilt image digest contract below.
+4. Validate and select in the <strong>new</strong> environment:</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>config.appdefinition<span class="w"> </span>--validate<span class="w"> </span>samples/custom-app/hosted
+azd<span class="w"> </span>env<span class="w"> </span><span class="nb">set</span><span class="w"> </span>AGENTLZ_APP_DEFINITION<span class="w"> </span>samples/custom-app/hosted/app-definition.json
+azd<span class="w"> </span>hooks<span class="w"> </span>run<span class="w"> </span>preup
+</code></pre></div>
+<p>Expect validation to pass. This checks schema, folder/service contracts and
+  binding, not image availability or application behavior. Schema validation
+  accepts the all-zero editing marker; deployment requires actual source HEAD.
+5. For a custom-only deployment, set <code>DEPLOYMENT_TOPOLOGY=classic</code> in the azd
+ environment <strong>before first provision</strong> to suppress the bundled hosted
+ orchestrator selection. This is a custom-definition composition requirement,
+ not a second Agent Application deployment path. The custom hosted component
+ receives its required hosted foundation resources.
+ Then provision the selected definition using
+ the <a href="../deploy-infra-only/">Deploy infra only runbook</a>, and run root <code>azd deploy</code>.
+ Its service uses its own source/image
+ contract, not the Agent Application hosted image-preparation handoff.
+6. With the custom hosted example's answer logic, confirm the response names
+ the intended project endpoint. A value of <code>unknown</code> or <code>unavailable</code> indicates
+ missing project configuration or failed configuration access. Check the
+ published outputs and logs, and resolve the issue before proceeding.
+ With your logic, verify actual application behavior and denied-access cases.</p>
+</li>
+</ol>
+<p>The definition <code>id</code> binds the environment; <code>agent</code> names the component/service;
+<code>sample-hosted-agent</code> names the custom example's Foundry agent. The project endpoint
+URL is supplied separately at runtime. For a Container App instead, use
+<code>samples/custom-app/containerapp/</code> and its matching service file; changing only
+the hosted example's <code>kind</code> is insufficient.</p>
+<h3 id="verify-and-recover">Verify and recover</h3>
+<p>Retain the definition, service file, source/image pin and environment together.
+For HEAD mismatches, compare <code>git rev-parse HEAD</code> inside the source folder with
+the declared pin without disabling validation.</p>
+<p>For image-pull or role failures, keep the same application ID and immutable image.
+Use <a href="../troubleshooting/#custom-hosted-image-pull-fails-with-a-classic-bundled-orchestrator">custom hosted image-pull recovery</a>.
+Do not substitute another environment's endpoints, broad grants or registry admin
+credentials. Role propagation can require an explicit retry.</p>
+<h3 id="application-definition">Application definition</h3>
+<h4 id="shipped-example">Shipped example</h4>
+<p>Inspect the
+<a href="https://github.com/Azure/agent-landing-zone/tree/main/samples/custom-app/hosted">custom hosted example files</a>
+rather than copying an illustrative payload.
+Read them at your recorded platform commit; the default branch can advance.</p>
+<h4 id="fields">Fields</h4>
+<p>The authoritative
+<a href="https://github.com/Azure/agent-landing-zone/blob/main/contracts/app-definition-v1.schema.json">v1 schema</a>
+defines required fields and allowed values. In particular, names must match
+services, paths stay inside the application folder, and hosted components
+cannot set Container App <code>ingress</code> or <code>resources</code>.</p>
+<p>Definition settings are validated but <strong>not published to App Configuration</strong>.
+Arrange runtime configuration separately.</p>
+<h4 id="what-a-definition-cannot-contain">What a definition cannot contain</h4>
+<p>No lifecycle hooks, Azure role names or remote URLs (except <code>$schema</code>).
+Configure endpoints separately and grant permissions through capability profiles.</p>
+<h3 id="capability-profiles">Capability profiles</h3>
+<p>Every component receives <code>base</code>; add only required profiles from the
+<a href="https://github.com/Azure/agent-landing-zone/blob/main/config/appdefinition/profiles.py">profile catalog</a>.
+These profiles grant service-resource access to component identities.
+Configure user consent and document authorization separately, preserving
+<a href="../application-auth/">authentication and OBO</a> and
+<a href="../foundry-iq/">Foundry IQ source permissions</a>.</p>
+<p>Container App profiles reconcile during post-provisioning. Hosted image pull
+uses the existing Foundry <strong>project</strong> managed identity. After deployment verifies
+the routed agent version and <strong>instance</strong> identity, it reconciles that instance's
+declared profiles before greeting smoke. Agent Application orchestrator grants are not
+substituted; denied or ambiguous assignments fail deployment.</p>
+<p>Key Vault targeting and scope resolution follow the
+<a href="https://github.com/Azure/agent-landing-zone/blob/main/config/appdefinition/roles.py">role assignment contract</a>;
+ambiguous resources are not guessed.</p>
+<h3 id="folder-layout-and-azureyaml">Folder layout and <code>azure.yaml</code></h3>
+<p>Keep <code>azure.yaml</code> beside the definition, with a matching service for each
+component and no project/service hooks. <code>components[].path</code> points to source,
+not another azd project; align the service's <code>project</code> with it.
+Hosted services need an explicit agent <code>name</code> and <code>responses</code> or <code>invocations</code>.
+Deployment reuses the selected environment and deploys each service by name.</p>
+<h3 id="source-pinning">Source pinning</h3>
+<ul>
+<li><strong><code>source.commit</code>:</strong> must equal the local source folder's HEAD. Nothing is
+  cloned; builds include uncommitted working-tree changes.</li>
+<li><strong><code>source.imageDigest</code>:</strong> requires a qualified service <code>image</code> in <code>azure.yaml</code>.
+  Deployment replaces its tag/digest with the exact declared digest and uses
+  image passthrough, not a new build. All environment substitutions must resolve.</li>
+</ul>
+<p>With <code>NETWORK_ISOLATION=true</code>, source Docker builds use <code>ACR_TASK_AGENT_POOL</code>
+and deploy the resulting digest. Service <code>project</code> must match component path,
+with <code>Dockerfile</code> and context <code>.</code> there. Unsupported layouts/options fail;
+provide a prebuilt digest instead. Public builds retain normal azd behavior.
+See the <a href="https://github.com/Azure/agent-landing-zone/blob/main/config/deployment/custom_application.py">deployment contract</a>.</p>
+<p>Deployment temporarily rewrites image settings in the child <code>azure.yaml</code> and
+restores it even on failure. Do not edit it or deploy concurrently.
+Digest pins do not bypass registry authorization. Custom Container Apps using
+the platform ACR receive registry wiring to their sole attached identity;
+other registries need separate access configuration. Hosted agents use the
+project identity's declarative platform-ACR pull grant.</p>
+<p>Custom hosted components receive hosted foundation prerequisites even with a
+Container App layout for the bundled orchestrator; this does not deploy the
+bundled hosted orchestrator.
+Reapplying foundation can repair its declared pull grant; refreshing outputs
+alone cannot. Follow the recovery link above.</p>
+<h3 id="reading-platform-outputs-at-runtime">Reading platform outputs at runtime</h3>
+<p>Read <code>AGENTLZ_PLATFORM_OUTPUTS</code> from <code>APP_CONFIG_ENDPOINT</code> with label <code>agent-lz</code>,
+as both custom application examples demonstrate. The publisher exposes selected Container App
+client IDs; hosted instance identities are unavailable during foundation
+provisioning. See <a href="../deploy-infra-only/#platform-outputs">published platform outputs</a>.</p>
+<p>The hosted greeting checks for nonempty assistant output using the declared
+protocol, preferring <code>invocations</code> when both are present. Validate retrieval and
+authorization with representative tasks and allowed and denied identities.</p>
+<h3 id="validate-and-select-a-definition">Validate and select a definition</h3>
+<p>Use the validation/selection commands above with your own definition path.
+Pre-deploy rechecks definition and binding; mismatches exit with code 2.
+For foundation without application deployment, follow
+the <a href="../deploy-infra-only/">Deploy infra only runbook</a>.</p>
+<h3 id="configappdefinition-reference"><code>config.appdefinition</code> reference</h3>
+<p>Use <code>python -m config.appdefinition --help</code> for options. The
+<a href="https://github.com/Azure/agent-landing-zone/blob/main/config/appdefinition/__main__.py">CLI source</a>
+defines validation, binding checks, environment selection and Container App
+profile assignment. Do not use binding commands to replace an environment's application.</p>
+<h3 id="related-pages">Related pages</h3>
+<ul>
+<li><a href="../deploy-full-stack/">Deploy full stack runbook</a></li>
+<li><a href="../hosted-agents/">Hosted agents</a></li>
+<li><a href="../configuration/">Deployment settings</a></li>
+</ul>
+<h2 id="validation">Validation</h2>
+<ol>
+<li>Run definition validation and confirm the environment remains bound to its
+   intended application ID.</li>
+<li>In each source folder, compare <code>git rev-parse HEAD</code> with its declared commit.
+   Inspect <code>git status --porcelain</code>; permit only recorded deployment-input edits,
+   not uncommitted application source changes.</li>
+<li>Compare the registry digest and selected service/version image with the
+   recorded build or prebuilt digest. Confirm placeholders are no longer serving.</li>
+<li>Exercise the changed behavior with allowed and denied identities. For the
+   custom hosted example, confirm configuration access as described in Step 6.
+   Do not accept protected retrieval until its identity integration is proven.</li>
+</ol>
+<h2 id="rollback">Rollback</h2>
+<ol>
+<li>Stop promotion. Restore the previous tested definition and service file,
+   keeping the same application ID. For Agent Application customizations,
+   restore both manifest and definition pins together.</li>
+<li>Restore the source checkout to its declared commit, preserving local work
+   separately, or verify the previous immutable image remains available to the
+   runtime identity. Do not replace a digest with a mutable tag.</li>
+<li>Preview foundation changes before applying them. Redeploy through the same
+   procedure used above: hosted Agent Application preparation and provisioned
+   digest handoff, or the custom service's own definition contract.</li>
+<li>Restore separately managed settings using recorded values and repeat
+   <a href="#validation">Validation</a>. Redeployment does not reverse data/schema changes;
+   use an owner-approved recovery plan if the previous application is incompatible.</li>
+</ol>
+<p>Do not edit the binding, delete data or broaden permissions to force rollback.
+Deleting the local definition does not remove Azure resources.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <div style="
+  background-color: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+  text-align: center;
+  font-size: 0.95em;
+  padding: 1em 0;
+">
+  © 2026 Azure AI Landing Zones
+</div>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.icon", "content.iconify", "navigation.tracking", "content.code.annotate", "navigation.top"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+    
+  </body>
+</html>

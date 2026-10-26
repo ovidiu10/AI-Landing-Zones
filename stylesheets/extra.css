@@ -1,0 +1,351 @@
+/* Minimal nav typography tweak: reduce left sidebar size for better density */
+
+.md-nav--primary .md-nav__link,
+.md-nav--primary .md-nav__title {
+  font-size: 0.85rem;
+  line-height: 1.3;
+}
+
+.md-nav--primary .md-nav__link > .md-ellipsis {
+  text-wrap: balance;
+}
+
+/* Slightly reduce section labels as well (Material renders them as labels) */
+.md-nav--primary .md-nav__item--section > label.md-nav__link {
+  font-size: 0.85rem;
+  line-height: 1.3;
+}
+
+/* Keep parameter / env-var identifiers in reference tables on a single line.
+   Material for MkDocs applies `word-break: break-word` to typeset tables,
+   which causes long camelCase names (e.g. `networkIsolation`,
+   `useZoneRedundancy`, `NETWORK_ISOLATION`) to wrap mid-word inside narrow
+   columns. We disable that for inline <code> elements inside tables — the
+   Material `.md-typeset__table` wrapper already provides horizontal scroll
+   when a row gets too wide, which is a much nicer fallback than breaking
+   identifiers mid-word. */
+.md-typeset table:not([class]) td code,
+.md-typeset table:not([class]) th code {
+  word-break: keep-all;
+  overflow-wrap: normal;
+  white-space: nowrap;
+}
+
+.md-typeset .landing-zone-overview {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.6rem;
+  margin: 1.2rem 0 0.8rem;
+}
+
+.md-typeset .landing-zone-overview h2 {
+  margin: 0 0 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.md-typeset .landing-zone-overview p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.md-typeset .landing-zone-overview + .admonition.note > p:not(.admonition-title) {
+  text-wrap: pretty;
+}
+
+@media (max-width: 48em) {
+  .md-typeset .landing-zone-overview {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.md-typeset .alz-download-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 0.8rem;
+  margin: 1rem 0;
+}
+
+.md-typeset .alz-download-grid--single {
+  max-width: 28rem;
+}
+
+.md-typeset .alz-download-card {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.55rem;
+  box-shadow: 0 0.15rem 0.45rem rgba(0, 0, 0, 0.05);
+  color: var(--md-default-fg-color);
+  display: flex;
+  flex-direction: column;
+  gap: 0.22rem;
+  padding: 0.85rem 1rem;
+  transition: border-color 120ms ease, box-shadow 120ms ease, transform 120ms ease;
+}
+
+.md-typeset .alz-download-card:hover {
+  border-color: var(--md-accent-fg-color);
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.09);
+  transform: translateY(-1px);
+}
+
+.md-typeset .alz-download-card strong {
+  color: var(--md-primary-fg-color);
+  font-size: 0.95rem;
+}
+
+.md-typeset .alz-download-card span:last-child {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.72rem;
+  line-height: 1.35;
+}
+
+.md-typeset .alz-download-card__label {
+  color: var(--md-accent-fg-color);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.md-typeset .alz-download-card--primary {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--md-primary-fg-color) 8%, transparent), transparent);
+  border-color: color-mix(in srgb, var(--md-primary-fg-color) 28%, var(--md-default-fg-color--lightest));
+}
+
+.md-typeset details.runbook-command {
+  background: transparent;
+  border: 0;
+  border-block: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0;
+  box-shadow: none;
+  color: inherit;
+  font-size: inherit;
+  margin: 1em 0;
+  padding: 0;
+}
+
+.md-typeset details.runbook-command > summary {
+  background: transparent;
+  color: var(--md-primary-fg-color);
+  cursor: pointer;
+  font-weight: 600;
+  margin: 0;
+  padding: 0.7rem 1.8rem 0.7rem 0;
+}
+
+.md-typeset details.runbook-command > summary::before {
+  display: none;
+}
+
+.md-typeset details.runbook-command > summary::after {
+  margin-top: -0.5rem;
+  top: 50%;
+}
+
+.md-typeset details.runbook-command > summary:hover {
+  color: var(--md-accent-fg-color);
+}
+
+.md-typeset details.runbook-command > summary:focus-visible {
+  outline: 2px solid var(--md-accent-fg-color);
+  outline-offset: 2px;
+}
+
+.md-typeset details.runbook-command[open] {
+  padding-bottom: 0.6rem;
+}
+
+.md-typeset .runbook-path {
+  container-type: inline-size;
+  margin: 1.2rem 0 1.4rem;
+}
+
+.md-typeset .runbook-path ol {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.md-typeset .runbook-path ol > li {
+  align-items: center;
+  background: color-mix(in srgb, var(--md-primary-fg-color) 4%, var(--md-default-bg-color));
+  border: 1px solid color-mix(in srgb, var(--md-primary-fg-color) 28%, var(--md-default-bg-color));
+  border-radius: 0.2rem;
+  color: var(--md-default-fg-color);
+  display: flex;
+  flex-direction: column;
+  font-size: 0.68rem;
+  justify-content: center;
+  line-height: 1.4;
+  margin: 0;
+  min-height: 4.3rem;
+  min-width: 0;
+  padding: 0.65rem 0.4rem;
+  position: relative;
+  text-align: center;
+}
+
+.md-typeset .runbook-path strong {
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+.md-typeset .runbook-path__detail {
+  font-size: 0.62rem;
+  margin-top: 0.2rem;
+}
+
+.md-typeset .runbook-path li:not(:last-child)::before,
+.md-typeset .runbook-path li:not(:last-child)::after {
+  border-color: var(--md-primary-fg-color);
+  border-style: solid;
+  content: "";
+  position: absolute;
+}
+
+.md-typeset .runbook-path li:not(:last-child)::before {
+  border-width: 0.08rem 0 0;
+  height: 0;
+  left: calc(100% + 0.2rem);
+  top: 50%;
+  width: 0.85rem;
+}
+
+.md-typeset .runbook-path li:not(:last-child)::after {
+  border-width: 0.08rem 0.08rem 0 0;
+  height: 0.3rem;
+  left: calc(100% + 0.7rem);
+  top: calc(50% - 0.15rem);
+  transform: rotate(45deg);
+  width: 0.3rem;
+}
+
+.md-typeset .runbook-path--annotated ol {
+  grid-template-columns: minmax(0, 1fr) 1.25rem minmax(0, 1fr) minmax(8rem, 1.5fr) minmax(0, 1fr);
+  gap: 0.35rem;
+}
+
+.md-typeset .runbook-path--annotated ol > .runbook-path__connection {
+  background: none;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+}
+
+.md-typeset .runbook-path--annotated li::before,
+.md-typeset .runbook-path--annotated li::after {
+  display: none;
+}
+
+.md-typeset .runbook-path__protocol,
+.md-typeset .runbook-path__authentication {
+  font-size: 0.62rem;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+
+.md-typeset .runbook-path__protocol {
+  bottom: calc(50% + 0.35rem);
+}
+
+.md-typeset .runbook-path__authentication {
+  top: calc(50% + 0.35rem);
+}
+
+.md-typeset .runbook-path__arrow {
+  border-top: 0.08rem solid var(--md-primary-fg-color);
+  left: 0.2rem;
+  position: absolute;
+  right: 0.2rem;
+  top: 50%;
+}
+
+.md-typeset .runbook-path__arrow::after {
+  border: solid var(--md-primary-fg-color);
+  border-width: 0.08rem 0.08rem 0 0;
+  content: "";
+  height: 0.3rem;
+  position: absolute;
+  right: 0;
+  top: -0.19rem;
+  transform: rotate(45deg);
+  width: 0.3rem;
+}
+
+.md-typeset .runbook-path .runbook-path__route {
+  font-size: 0.68rem;
+  margin: 0.6rem 0 0;
+}
+
+@container (max-width: 32rem) {
+  .md-typeset .runbook-path ol {
+    grid-auto-flow: row;
+    grid-template-columns: 1fr;
+  }
+
+  .md-typeset .runbook-path ol > li {
+    min-height: 0;
+    padding: 0.6rem 0.8rem;
+  }
+
+  .md-typeset .runbook-path li:not(:last-child)::before {
+    border-width: 0 0 0 0.08rem;
+    height: 0.85rem;
+    left: 50%;
+    top: calc(100% + 0.2rem);
+    width: 0;
+  }
+
+  .md-typeset .runbook-path li:not(:last-child)::after {
+    left: calc(50% - 0.15rem);
+    top: calc(100% + 0.7rem);
+    transform: rotate(135deg);
+  }
+
+  .md-typeset .runbook-path--annotated ol > .runbook-path__connection {
+    min-height: 4rem;
+  }
+
+  .md-typeset .runbook-path--annotated ol > .runbook-path__connection[aria-hidden] {
+    min-height: 1rem;
+  }
+
+  .md-typeset .runbook-path__protocol,
+  .md-typeset .runbook-path__authentication {
+    left: calc(50% + 0.8rem);
+    text-align: left;
+  }
+
+  .md-typeset .runbook-path__protocol {
+    bottom: auto;
+    top: 0;
+  }
+
+  .md-typeset .runbook-path__authentication {
+    top: 1.1rem;
+  }
+
+  .md-typeset .runbook-path__arrow {
+    border-width: 0 0 0 0.08rem;
+    border-style: solid;
+    border-color: var(--md-primary-fg-color);
+    bottom: 0;
+    left: 50%;
+    right: auto;
+    top: 0;
+  }
+
+  .md-typeset .runbook-path__arrow::after {
+    bottom: 0;
+    right: -0.19rem;
+    top: auto;
+    transform: rotate(135deg);
+  }
+}
